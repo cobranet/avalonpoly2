@@ -1,0 +1,51 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<dom-module id="av-login">
+    <template>
+	[[jwt]]
+    </template>
+    <script>
+     class AvLogin extends Polymer.Element {
+	 static get is() { return 'av-login'; }
+	 static get properties(){
+	     return {
+		 appid: String,
+		 jwt: String
+		  
+	     }
+	}
+	
+	ready(){
+	    super.ready();
+	    var appid = this.appid;
+	    var that = this;
+	    window.fbAsyncInit = function() {
+		FB.init({
+		     appId      : appid,
+		     cookie     : true,
+		     xfbml      : true,
+		     version    : 'v2.8'
+		});
+
+		FB.getLoginStatus(function(response) {
+		    that.statusChangeCallback(response);
+		});
+
+		 FB.AppEvents.logPageView();   
+	     };
+	    (function(d, s, id){
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	    }(document, 'script', 'facebook-jssdk'));
+	    
+	}
+	 statusChangeCallback(response){
+	     this.jwt = response.authResponse.accessToken;
+	}
+     }
+     
+     window.customElements.define(AvLogin.is, AvLogin);
+    </script>
+</dom-module>

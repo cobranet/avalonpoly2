@@ -16,24 +16,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
       }
     </style>
 
     <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
+	<div class="circle">1</div>
+      <h1>Welcome to Avalon</h1>
       <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
       <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
     </div>
   </template>
-
   <script>
-    class AvWelcome extends Polymer.Element {
-      static get is() { return 'av-welcome'; }
-    }
-
+   class AvWelcome extends Polymer.Element {
+       static get is() { return 'av-welcome'; }
+   }
+   
     window.customElements.define(AvWelcome.is, AvWelcome);
   </script>
 </dom-module>
